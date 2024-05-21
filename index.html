@@ -17,6 +17,23 @@
 
     <button>Copiar Senha</button>
 
+    <script>
+        // LÓGICA PARA GERAR A SENHA
+        function generatePassword() {
+            var chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]";
+
+            let password = ""; // VARIAVEL QUE VAI CONTER A SENHA GERADA
+
+            for (let i = 0; i < 8; i++) { // REPETE ATE 8 VEZES OS COMANDOS A SEGUIR
+                const randomNumber = Math.floor(Math.random() * chars.length); //GERA UM NÚMERO ALEATÓRIO ENTRE 0 E O TAMANHO DA VARIÁVEL CHARS(e o número é tratado com o Math.floor para garantir que seja um número inteiro positivo)
+                password += chars.substring(randomNumber, randomNumber + 1); //CONCATENA A VARIÁVEL "PASSWORD" | substring É USADO PARA EXTRAIR UMA PARTE DA STRING | nesse caso COMEÇANDO PELO RANDOMNUMBER E TERMINANDO PELO RANDOMNUMBER + 1 | DESSA FORMA RECORTA UM CARÁCTER ALEATÓRIO DA VARIÁVEL "CHARS" E CONCATENA A VARIÁVEL "PASSWORD" | SERÁ REPETIDO 8 VEZES ATÉ QUE A SENHA ESTEJA FORMADA
+            }
+
+            console.log(password);
+        }
+        generatePassword();
+    </script>
+
 </body>
 
 </html>
