@@ -15,9 +15,12 @@
 
     <input type="range" name="password-length" id="password-length" value="16" min="4" max="64">
 
-    <button>Copiar Senha</button>
+    <button id="copy-button">Copiar Senha</button>
 
     <script>
+        // ELEMENTO REFERENTE AO INPUT DA SENHA
+        const inputEl = document.querySelector("#password");
+
         // CONTROLA O COMPRIMENTO DA SENHA
         let passwordLength = 16
 
@@ -32,8 +35,11 @@
                 password += chars.substring(randomNumber, randomNumber + 1); //CONCATENA A VARIÁVEL "PASSWORD" | substring É USADO PARA EXTRAIR UMA PARTE DA STRING | nesse caso COMEÇANDO PELO RANDOMNUMBER E TERMINANDO PELO RANDOMNUMBER + 1 | DESSA FORMA RECORTA UM CARÁCTER ALEATÓRIO DA VARIÁVEL "CHARS" E CONCATENA A VARIÁVEL "PASSWORD" | SERÁ REPETIDO 8 VEZES ATÉ QUE A SENHA ESTEJA FORMADA
             }
 
-            const inputEl = document.querySelector("#password"); // CRIA UMA NOVA CONSTANTE (element) | PEGA O ELEMENTO QUE POSSUI O ID "PASSWORD" | ATRIBUI ESSE ELEMENTO A ESSA CONSTANTE
-            inputEl.value = password; // AGORA QUE A NOVA CONSTANTE POSSUI UM VALOR | ESSE VALOR SERÁ ATRIBUÍDO A VARIÁVEL QUE VAI CONTER A SENHA | .value É USADO PARA INSERIR AUTOMATICAMENTE O VALOR GERADO DENTRO DO INPUT | SE NÃO FOSSE USADO O VALOR NÃO SERIA APLICADO AUTOMATICAMENTE E PRECISARIA SER DIGITADO
+            inputEl.value = password; // AGORA QUE A VARIÁVEL QUE ARMAZENA A SENHA POSSUI UM VALOR | ESSE VALOR SERÁ ATRIBUÍDO AO ELEMENTO REFERENTE AO INPUT DA SENHA | .value É USADO PARA INSERIR AUTOMATICAMENTE O VALOR GERADO DENTRO DO INPUT | SE NÃO FOSSE USADO O VALOR NÃO SERIA APLICADO AUTOMATICAMENTE E PRECISARIA SER DIGITADO
+        }
+
+        function copy() {
+            navigator.clipboard.writeText(inputEl.value)
         }
 
         const passwordLengthEl = document.querySelector("#password-length"); // CRIA UMA NOVA CONSTANTE | CAPTURA O ELEMENTO DO DOM REFERENTE AO INPUT-RANGE | AGORA A CONSTANTE SERÁ PREENCHIDA COM O VALOR SELECIONADO NO SLIDER
@@ -41,6 +47,9 @@
             passwordLength = passwordLengthEl.value // A FUNÇÃO CHAMA A VARIÁVEL QUE CONTROLA O COMPRIMENTO DA SENHA | DEFINE QUE ELA SERÁ O VALOR DA NOVA CONSTANTE | QUE FOI CRIADA PARA CAPTURAR O VALOR DEFINIDO NO SLIDER
             generatePassword() // DESSA FORMA GERA UM NOVO PASSWORD | COM O COMPRIMENTO QUE FOI SELECIONADO NO SLIDER
         })
+
+        const copyButtonEl = document.querySelector("#copy-button")
+        copyButtonEl.addEventListener("click", copy)
 
         generatePassword();
     </script>
