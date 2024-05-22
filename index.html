@@ -18,20 +18,30 @@
     <button>Copiar Senha</button>
 
     <script>
+        // CONTROLA O COMPRIMENTO DA SENHA
+        let passwordLength = 16
+
         // LÓGICA PARA GERAR A SENHA
         function generatePassword() {
             var chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]";
 
-            let password = ""; // VARIAVEL QUE VAI CONTER A SENHA GERADA
+            let password = ""; // VARIÁVEL QUE VAI CONTER A SENHA GERADA
 
-            for (let i = 0; i < 8; i++) { // REPETE ATE 8 VEZES OS COMANDOS A SEGUIR
+            for (let i = 0; i < passwordLength; i++) { // REPETE ATE O TAMANHO DO passwordLength OS COMANDOS A SEGUIR:
                 const randomNumber = Math.floor(Math.random() * chars.length); //GERA UM NÚMERO ALEATÓRIO ENTRE 0 E O TAMANHO DA VARIÁVEL CHARS(e o número é tratado com o Math.floor para garantir que seja um número inteiro positivo)
                 password += chars.substring(randomNumber, randomNumber + 1); //CONCATENA A VARIÁVEL "PASSWORD" | substring É USADO PARA EXTRAIR UMA PARTE DA STRING | nesse caso COMEÇANDO PELO RANDOMNUMBER E TERMINANDO PELO RANDOMNUMBER + 1 | DESSA FORMA RECORTA UM CARÁCTER ALEATÓRIO DA VARIÁVEL "CHARS" E CONCATENA A VARIÁVEL "PASSWORD" | SERÁ REPETIDO 8 VEZES ATÉ QUE A SENHA ESTEJA FORMADA
             }
 
             const inputEl = document.querySelector("#password"); // CRIA UMA NOVA CONSTANTE (element) | PEGA O ELEMENTO QUE POSSUI O ID "PASSWORD" | ATRIBUI ESSE ELEMENTO A ESSA CONSTANTE
-            inputEl.value = password; // AGORA QUE A NOVA CONSTANTE POSSUI UM VALOR | ESSE VALOR SERÁ ATRIBUIDO A VARIÁVEL QUE VAI CONTER A SENHA | .value É USADO PARA INSERIR AUTOMATICAMENTE O VALOR GERADO DENTRO DO INPUT | SE NÃO FOSSE USADO O VALOR NÃO SERIA APLICADO AUTOMATICAMENTE E PRECISARIA SER DIGITADO
+            inputEl.value = password; // AGORA QUE A NOVA CONSTANTE POSSUI UM VALOR | ESSE VALOR SERÁ ATRIBUÍDO A VARIÁVEL QUE VAI CONTER A SENHA | .value É USADO PARA INSERIR AUTOMATICAMENTE O VALOR GERADO DENTRO DO INPUT | SE NÃO FOSSE USADO O VALOR NÃO SERIA APLICADO AUTOMATICAMENTE E PRECISARIA SER DIGITADO
         }
+
+        const passwordLengthEl = document.querySelector("#password-length"); // CRIA UMA NOVA CONSTANTE | CAPTURA O ELEMENTO DO DOM REFERENTE AO INPUT-RANGE | AGORA A CONSTANTE SERÁ PREENCHIDA COM O VALOR SELECIONADO NO SLIDER
+        passwordLengthEl.addEventListener("input", function () { // ADICIONA UM EVENTO A NOVA CONSTANTE | ESSE EVENTO SERÁ DEFINIDO PELA FUNÇÃO A SEGUIR:
+            passwordLength = passwordLengthEl.value // A FUNÇÃO CHAMA A VARIÁVEL QUE CONTROLA O COMPRIMENTO DA SENHA | DEFINE QUE ELA SERÁ O VALOR DA NOVA CONSTANTE | QUE FOI CRIADA PARA CAPTURAR O VALOR DEFINIDO NO SLIDER
+            generatePassword() // DESSA FORMA GERA UM NOVO PASSWORD | COM O COMPRIMENTO QUE FOI SELECIONADO NO SLIDER
+        })
+
         generatePassword();
     </script>
 
