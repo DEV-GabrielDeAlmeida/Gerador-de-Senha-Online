@@ -10,13 +10,28 @@
 </head>
 
 <body>
-    <h1>Gerador de Senha</h1>
-    <p>Utilize o nosso Gerador de Senha online para criar uma senha forte e segura.</p>
+    <main>
+        <section class="titleSection">
+            <h1 class="title">Gerador de Senha</h1>
+            <p class="subtitle">Utilize o nosso Gerador de Senha online para criar uma senha forte e segura.</p>
+        </section>
 
-    <input type="text" name="input-password" id="input-password">
-    <input type="range" name="input-password-length" id="input-password-length" value="16" min="4" max="67">
+        <section class="inputSection">
+            <div class="password">
+                <div class="text">
+                    <input type="text" name="input-password" id="input-password">
+                </div>
+                <div class="actions">
+                    <button id="copy">C</button>
+                    <button id="reload">R</button>
+                </div>
+            </div>
+        </section>
 
-    <button id="button-copy">Copiar Senha</button>
+        <input type="range" name="input-password-length" id="input-password-length" value="16" min="4" max="67">
+
+        <button id="button-copy">Copiar Senha</button>
+    </main>
 
     <script>
         // DEFINE O TAMANHO PADRÃO DA SENHA
