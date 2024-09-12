@@ -22,8 +22,12 @@
                     <input type="text" name="input-password" id="input-password">
                 </div>
                 <div class="actions">
-                    <button id="copy">C</button>
-                    <button id="reload">R</button>
+                    <button id="img-copy">
+                        <img src="./assets/img/copy.svg" width="42px" alt="copy img">
+                    </button>
+                    <button id="reload">
+                        <img src="./assets/img/reload.svg" width="42px" alt="reload img">
+                    </button>
                 </div>
             </div>
         </section>
@@ -68,8 +72,8 @@
         const inputPasswordLengthEl = document.querySelector("#input-password-length")
         inputPasswordLengthEl.addEventListener("input", changePassword)
 
-        const buttonCopyEl = document.querySelector("#button-copy")
-        buttonCopyEl.addEventListener("click", copyPassword)
+        document.querySelector("#button-copy").addEventListener("click", copyPassword)
+        document.querySelector("#img-copy").addEventListener("click", copyPassword)
 
         // CHAMA A FUNÇÃO 
         generatePassword()
