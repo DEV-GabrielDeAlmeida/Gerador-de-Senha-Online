@@ -30,9 +30,40 @@
                     </button>
                 </div>
             </div>
+
+            <div class="security-indicator">
+                <div class="bar safe" id="security-bar" style="width: 90%;">
+                </div>
+            </div>
         </section>
 
-        <input type="range" name="input-password-length" id="input-password-length" value="16" min="4" max="67">
+        <section class="customizeSection">
+            <h3 class="title">Personalizar</h3>
+            <div class="actions">
+                <div class="password-length">
+                    <input type="range" class="slider" name="input-password-length" id="input-password-length"
+                        value="16" min="4" max="67">
+                </div>
+                <div class="config">
+                    <label class="checkbox-container">
+                        <span class="text">Maiúsculas</span>
+                        <input type="checkbox" id="uppercase-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Números</span>
+                        <input type="checkbox" id="number-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Símbolos</span>
+                        <input type="checkbox" id="symbol-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
 
         <button id="button-copy">Copiar Senha</button>
     </main>
