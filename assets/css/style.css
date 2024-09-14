@@ -208,3 +208,22 @@ section {
 .checkbox-container input:checked ~ .checkmark:after {
     display: block;
 }
+
+.submit {
+    text-align: center;
+}
+
+.submit button {
+    background-color: #51cfe0b5;
+    font-size: 1.375rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 1rem 2rem;    
+    transition: all 0.2s;
+}
+
+.submit button:hover {
+    background-color: #28e2ff;
+}

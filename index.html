@@ -41,6 +41,7 @@
             <h3 class="title">Personalizar</h3>
             <div class="actions">
                 <div class="password-length">
+                    <p>Tamanho: <span id="password-length">16</span></p>
                     <input type="range" class="slider" name="input-password-length" id="input-password-length"
                         value="16" min="4" max="67">
                 </div>
@@ -65,8 +66,12 @@
         </section>
 
 
-        <button id="button-copy">Copiar Senha</button>
+        <div class="submit">
+            <button id="button-copy">Copiar Senha</button>
+        </div>
     </main>
+
+    <footer></footer>
 
     <script>
         // DEFINE O TAMANHO PADRÃO DA SENHA
@@ -74,7 +79,24 @@
 
         // GERA A SENHA
         function generatePassword() {
-            var chars = "ABCDEFGHJKMNPQRSTUVWXYZ123456789abcdefghjkmnpqrstuvwxyz!@#$%^&*()[]"
+            let chars = "abcdefghjkmnpqrstuvwxyz"
+
+            const upperCaseChars = "ABCDEFGHJKMNPQRSTUVWXYZ"
+            const numberChars = "123456789"
+            const symbolChars = "!@#$%^&*()[]"
+
+            if (upperCaseCheckEl.checked) {
+                chars += upperCaseChars
+            }
+
+            if (numberCheckEl.checked) {
+                chars += numberChars
+            }
+
+            if (symbolCheckEl.checked) {
+                chars += symbolChars
+            }
+
 
             let password = ""
 
@@ -89,6 +111,7 @@
         // ALTERA O TAMANHO DA SENHA
         function changePassword() {
             passwordLength = inputPasswordLengthEl.value
+            document.querySelector("#password-length").innerText = passwordLength
             generatePassword()
         }
 
@@ -99,6 +122,13 @@
 
         // RECUPERA OS ELEMENTOS DO DOM E ADICIONA EVENTOS
         const inputPasswordEl = document.querySelector("#input-password")
+
+        const upperCaseCheckEl = document.querySelector("#uppercase-check")
+        const numberCheckEl = document.querySelector("#number-check")
+        const symbolCheckEl = document.querySelector("#symbol-check")
+        upperCaseCheckEl.addEventListener("click", generatePassword)
+        numberCheckEl.addEventListener("click", generatePassword)
+        symbolCheckEl.addEventListener("click", generatePassword)
 
         const inputPasswordLengthEl = document.querySelector("#input-password-length")
         inputPasswordLengthEl.addEventListener("input", changePassword)
